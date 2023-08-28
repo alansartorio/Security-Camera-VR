@@ -1293,7 +1293,7 @@ GameObject:
   - component: {fileID: 1151204831}
   - component: {fileID: 1151204830}
   - component: {fileID: 1151204829}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1446,6 +1446,7 @@ MonoBehaviour:
   cursorClick: {fileID: -7185686571105137276, guid: 1c3177ddb97fd290183e6c0385a18165,
     type: 3}
   sensitivity: 0.0025
+  agent: {fileID: 1138803406}
 --- !u!1 &1545426130 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2288039117182455490, guid: a86bb280ae3a9142f9e5fb686f4acfdd,
