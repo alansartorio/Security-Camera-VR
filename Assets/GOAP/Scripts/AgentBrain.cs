@@ -34,6 +34,8 @@ namespace GOAP.Scripts
 
         private void OnActionStop(IActionBase action)
         {
+            if (client.itemsInHand > 0) return;
+            
             if (client.leftItemsToGrab > 0 && Random.Range(0, 2) == 1)
             {
                 agent.SetGoal<ObtainItemsGoal>(false);

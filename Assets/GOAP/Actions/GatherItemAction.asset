@@ -10,15 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84dc95c722d24e5db52864cbbff874fb, type: 3}
-  m_Name: GrabItemAction
+  m_Name: GatherItemAction
   m_EditorClassIdentifier: 
-  actionClass: GOAP.Scripts.GrabItemAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+  actionClass: GOAP.Scripts.GatherItemAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
-  target: {fileID: 11400000, guid: 3d35bcffd86ed4d168764c011cf3db37, type: 2}
+  target: {fileID: 11400000, guid: a3f7ff20820a3d6d1ad21906d025d343, type: 2}
   <BaseCost>k__BackingField: 1
   <InRange>k__BackingField: 1
   <MoveMode>k__BackingField: 0
-  conditions: []
-  effects:
+  conditions:
   - worldKey: {fileID: 11400000, guid: 5234447e8c83e9df78dff85c9e089e35, type: 2}
-    <Increase>k__BackingField: 1
+    <Comparison>k__BackingField: 3
+    <Amount>k__BackingField: 1
+  effects:
+  - worldKey: {fileID: 11400000, guid: ea9ad7b8615eb35ae8151fb22f8606b5, type: 2}
+    <Increase>k__BackingField: 0
+  - worldKey: {fileID: 11400000, guid: 5234447e8c83e9df78dff85c9e089e35, type: 2}
+    <Increase>k__BackingField: 0

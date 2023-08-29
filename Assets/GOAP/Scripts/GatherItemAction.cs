@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace GOAP.Scripts
 {
-    public class GrabItemAction : ActionBase<GrabItemAction.Data>
+    public class GatherItemAction : ActionBase<GatherItemAction.Data>
     {
         public class Data : IActionData
         {
@@ -23,7 +23,7 @@ namespace GOAP.Scripts
 
         public override void Start(IMonoAgent agent, Data data)
         {
-            data.Timer = Random.Range(2f, 4f);
+            data.Timer = 1f;
         }
 
         public override ActionRunState Perform(IMonoAgent agent, Data data, ActionContext context)
@@ -33,7 +33,8 @@ namespace GOAP.Scripts
             if (data.Timer > 0)
                 return ActionRunState.Continue;
 
-            data.client.itemsInHand++;
+            data.client.itemsInHand--;
+            data.client.leftItemsToGrab--;
 
             return ActionRunState.Stop;
         }
