@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace GOAP.Scripts
 {
-    public class GatherItemAction : ActionBase<GatherItemAction.Data>
+    public class StealItemAction : ActionBase<StealItemAction.Data>
     {
         public class Data : IActionData
         {
@@ -23,7 +23,7 @@ namespace GOAP.Scripts
 
         public override void Start(IMonoAgent agent, Data data)
         {
-            data.Timer = 1f;
+            data.Timer = 2f;
         }
 
         public override ActionRunState Perform(IMonoAgent agent, Data data, ActionContext context)
@@ -34,7 +34,7 @@ namespace GOAP.Scripts
                 return ActionRunState.Continue;
 
             data.client.itemsInHand--;
-            data.client.leftItemsToGet--;
+            data.client.leftItemsToSteal--;
 
             return ActionRunState.Stop;
         }

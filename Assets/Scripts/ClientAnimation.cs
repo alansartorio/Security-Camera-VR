@@ -14,6 +14,7 @@ public class ClientAnimation : MonoBehaviour
     private Animator animator;
     private AgentBehaviour agent;
     private GameObject appleInHand;
+    private static readonly int Steal = Animator.StringToHash("steal");
 
     private void Awake()
     {
@@ -53,12 +54,15 @@ public class ClientAnimation : MonoBehaviour
         if (action is GatherItemAction)
         {
             animator.SetTrigger(Gather);
+        } else if (action is StealItemAction)
+        {
+            animator.SetTrigger(Steal);
         }
     }
 
     private void OnActionStop(IActionBase action)
     {
-        if (action is GatherItemAction)
+        if (action is GatherItemAction || action is StealItemAction)
         {
             Destroy(appleInHand);
         }

@@ -35,13 +35,20 @@ namespace GOAP.Scripts
         private void OnActionStop(IActionBase action)
         {
             if (client.itemsInHand > 0) return;
-            
-            if (client.leftItemsToGrab > 0 && Random.Range(0, 2) == 1)
+
+            if ((client.leftItemsToGet > 0 || client.leftItemsToSteal > 0) && Random.Range(0, 2) == 1)
             {
-                agent.SetGoal<ObtainItemsGoal>(false);
+                if (Random.Range(0, client.leftItemsToGet + client.leftItemsToSteal) < client.leftItemsToGet)
+                {
+                    agent.SetGoal<GetItemsGoal>(false);
+                }
+                else
+                {
+                    agent.SetGoal<StealItemsGoal>(false);
+                }
                 return;
             }
-            
+
             agent.SetGoal<WanderGoal>(false);
         }
     }

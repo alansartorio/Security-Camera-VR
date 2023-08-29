@@ -4,7 +4,7 @@ using CrashKonijn.Goap.Sensors;
 
 namespace GOAP.Scripts
 {
-    public class LeftItemsToGrabSensor : LocalWorldSensorBase
+    public class LeftItemsToStealSensor : LocalWorldSensorBase
     {
         public override void Created()
         {
@@ -17,7 +17,7 @@ namespace GOAP.Scripts
         public override SenseValue Sense(IMonoAgent agent, IComponentReference references)
         {
             var client = references.GetCachedComponent<Client>();
-            return client.leftItemsToGet;
+            return client.leftItemsToSteal;
         }
     }
 }

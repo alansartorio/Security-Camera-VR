@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 654785064}
   - component: {fileID: 654785063}
   m_Layer: 0
-  m_Name: GOAPSet
+  m_Name: ClientGOAPSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1461,8 +1461,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff806838d224e9f80bb379a633e223c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftItemsToGrab: 0
+  maxItemCapacity: 0
+  leftItemsToGet: 0
+  leftItemsToSteal: 0
   itemsInHand: 0
+  thiefProbability: 0.1
 --- !u!1 &1151204827
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,6 +2868,16 @@ PrefabInstance:
       propertyPath: goapSetBehaviour
       value: 
       objectReference: {fileID: 654785063}
+    - target: {fileID: 1071865723052329291, guid: 270d8a2211a652cc7a327be1001e2b7c,
+        type: 3}
+      propertyPath: maxItemCapacity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071865723052329291, guid: 270d8a2211a652cc7a327be1001e2b7c,
+        type: 3}
+      propertyPath: thiefProbability
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2700958075650383540, guid: 270d8a2211a652cc7a327be1001e2b7c,
         type: 3}
       propertyPath: m_Name
