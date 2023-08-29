@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 11400000, guid: 4f2461656ec67eb96bc4c07de4abcfe2, type: 2}
+  - {fileID: 11400000, guid: a6a363ba3c3e47662ae26459f5b99d39, type: 2}
   goals:
   - {fileID: 11400000, guid: 2165cd76de8228dd98b69b9d41eee085, type: 2}
+  - {fileID: 11400000, guid: df82e912f433c9bceb25c4f0ab060b94, type: 2}
   targetSensors:
   - {fileID: 11400000, guid: eea372ca1d4a895e3a3115ae4ee4b102, type: 2}
-  worldSensors: []
+  worldSensors:
+  - {fileID: 11400000, guid: be63d2169c3972aae922795ca693d160, type: 2}
   debuggerClass: 
