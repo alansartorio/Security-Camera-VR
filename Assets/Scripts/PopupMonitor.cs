@@ -6,14 +6,16 @@ using UnityEngine.Serialization;
 
 public enum PopupType
 {
-    GoodCatch,
+    NiceCatch,
     AThiefEscaped,
+    WrongAccusation
 }
 
 public class PopupMonitor : MonoBehaviour
 {
     [SerializeField] private GameObject goodCatchPopup;
     [SerializeField] private GameObject aThiefEscapedPopup;
+    [SerializeField] private GameObject wrongAccusationPopup;
     private float popupDuration = 1;
     private float timer = 0;
     private Queue<PopupType> popups = new();
@@ -26,19 +28,23 @@ public class PopupMonitor : MonoBehaviour
             timer += popupDuration;
             if (popups.TryDequeue(out var popupType))
             {
-                goodCatchPopup.SetActive(popupType == PopupType.GoodCatch);
+                goodCatchPopup.SetActive(popupType == PopupType.NiceCatch);
                 aThiefEscapedPopup.SetActive(popupType == PopupType.AThiefEscaped);
+                wrongAccusationPopup.SetActive(popupType == PopupType.WrongAccusation);
             }
             else
             {
                 goodCatchPopup.SetActive(false);
                 aThiefEscapedPopup.SetActive(false);
+                wrongAccusationPopup.SetActive(false);
             }
         }
     }
 
     public void ShowPopup(PopupType popupType)
     {
+        if (popups.Count == 0)
+            timer = 0;
         popups.Enqueue(popupType);
     }
 }

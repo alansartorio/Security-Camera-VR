@@ -35,9 +35,23 @@ public class Client : MonoBehaviour
     {
         if (itemsHidden > 0)
         {
-            GameObject.FindObjectOfType<PopupMonitor>().ShowPopup(PopupType.AThiefEscaped);
+            FindObjectOfType<PopupMonitor>().ShowPopup(PopupType.AThiefEscaped);
         }
         
         Destroy(gameObject);
+    }
+
+    public void AccuseOfTheft()
+    {
+        if (itemsHidden > 0)
+        {
+            FindObjectOfType<PopupMonitor>().ShowPopup(PopupType.NiceCatch);
+        
+            Destroy(gameObject);
+        }
+        else
+        {
+            FindObjectOfType<PopupMonitor>().ShowPopup(PopupType.WrongAccusation);
+        }
     }
 }

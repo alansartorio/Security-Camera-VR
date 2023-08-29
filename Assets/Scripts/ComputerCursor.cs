@@ -42,13 +42,14 @@ public class ComputerCursor : MonoBehaviour
             var cameraMonitor = monitors[index].GetComponentInChildren<CameraMonitor>();
             var camera = cameraMonitor.securityCamera.GetComponentInChildren<Camera>();
             Ray ray = camera.ViewportPointToRay(pos / monitorSize);
-            if (Physics.Raycast(ray, out var hitInfo))
+            if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.gameObject.CompareTag("Client"))
             {
-                agent.SetDestination(hitInfo.point);
+                var client = hitInfo.transform.GetComponent<Client>();
+                client.AccuseOfTheft();
             }
         };
 
-        cursors = monitors.Select(m => m.transform.Find("Screen").Find("Canvas").Find("Cursor").gameObject).ToList();
+        cursors = monitors.Select(m => m.transform.Find("Screen/Canvas/Cursor").gameObject).ToList();
 
         cursorPosition.Set(monitorSize.x * monitors.Count / 2, monitorSize.y / 2);
         UpdatedCursorPosition();
