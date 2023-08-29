@@ -9,8 +9,11 @@ public class ClientAnimation : MonoBehaviour
     private static readonly int Walking = Animator.StringToHash("walking");
     private static readonly int Grab = Animator.StringToHash("grab");
     private static readonly int Gather = Animator.StringToHash("gather");
+    [SerializeField] private Transform hand;
+    [SerializeField] private GameObject applePrefab;
     private Animator animator;
     private AgentBehaviour agent;
+    private GameObject appleInHand;
 
     private void Awake()
     {
@@ -23,6 +26,7 @@ public class ClientAnimation : MonoBehaviour
         agent.Events.OnTargetOutOfRange += OnTargetOutOfRange;
         agent.Events.OnTargetInRange += OnTargetInRange;
         agent.Events.OnActionStart += OnActionStart;
+        agent.Events.OnActionStop += OnActionStop;
     }
 
     private void OnDisable()
@@ -30,6 +34,7 @@ public class ClientAnimation : MonoBehaviour
         agent.Events.OnTargetOutOfRange -= OnTargetOutOfRange;
         agent.Events.OnTargetInRange -= OnTargetInRange;
         agent.Events.OnActionStart -= OnActionStart;
+        agent.Events.OnActionStop -= OnActionStop;
     }
 
     void OnTargetInRange(ITarget target)
@@ -38,6 +43,8 @@ public class ClientAnimation : MonoBehaviour
         if (agent.CurrentAction is GrabItemAction)
         {
             animator.SetTrigger(Grab);
+            appleInHand = Instantiate(applePrefab, hand);
+            appleInHand.transform.localScale = Vector3.one * 0.01f;
         }
     }
 
@@ -46,6 +53,14 @@ public class ClientAnimation : MonoBehaviour
         if (action is GatherItemAction)
         {
             animator.SetTrigger(Gather);
+        }
+    }
+
+    private void OnActionStop(IActionBase action)
+    {
+        if (action is GatherItemAction)
+        {
+            Destroy(appleInHand);
         }
     }
     

@@ -32,7 +32,7 @@ namespace GOAP.Scripts
             Vector3 lookPos = destination - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.1f);  
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.1f);
         }
 
         public override ActionRunState Perform(IMonoAgent agent, Data data, ActionContext context)
