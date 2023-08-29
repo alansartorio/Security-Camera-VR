@@ -10,12 +10,15 @@ public class Client : MonoBehaviour
     public int leftItemsToSteal;
     public int itemsInHand;
     public float thiefProbability = 0.1f;
+    public int itemsHidden;
+    public int itemsInCart;
+    public int itemsInBag;
 
     private void Awake()
     {
         int totalItems = Random.Range(0, maxItemCapacity);
         bool steals = Random.Range(0f, 1) < thiefProbability;
-        if (steals)
+        if (totalItems > 0 && steals)
         {
             leftItemsToSteal = Random.Range(1, totalItems + 1);
             leftItemsToGet = totalItems - leftItemsToSteal;
@@ -26,5 +29,15 @@ public class Client : MonoBehaviour
             leftItemsToSteal = 0;
         }
         itemsInHand = 0;
+    }
+
+    public void Exited()
+    {
+        if (itemsHidden > 0)
+        {
+            GameObject.FindObjectOfType<PopupMonitor>().ShowPopup(PopupType.AThiefEscaped);
+        }
+        
+        Destroy(gameObject);
     }
 }

@@ -35,6 +35,7 @@ namespace GOAP.Scripts
 
             data.client.itemsInHand--;
             data.client.leftItemsToGet--;
+            data.client.itemsInCart++;
 
             return ActionRunState.Stop;
         }

@@ -16,9 +16,6 @@ MonoBehaviour:
     PublicKeyToken=null
   baseCost: 1
   conditions:
-  - worldKey: {fileID: 11400000, guid: ea9ad7b8615eb35ae8151fb22f8606b5, type: 2}
-    <Comparison>k__BackingField: 1
-    <Amount>k__BackingField: 0
-  - worldKey: {fileID: 11400000, guid: 786fdd6d55d45d562b36c9552291fe00, type: 2}
-    <Comparison>k__BackingField: 1
-    <Amount>k__BackingField: 0
+  - worldKey: {fileID: 11400000, guid: 76efe9f441b45f0189fca317bdaccc37, type: 2}
+    <Comparison>k__BackingField: 3
+    <Amount>k__BackingField: 1

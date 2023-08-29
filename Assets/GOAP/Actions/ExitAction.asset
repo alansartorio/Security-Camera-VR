@@ -10,22 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84dc95c722d24e5db52864cbbff874fb, type: 3}
-  m_Name: GatherItemAction
+  m_Name: ExitAction
   m_EditorClassIdentifier: 
-  actionClass: GOAP.Scripts.GatherItemAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+  actionClass: GOAP.Scripts.ExitAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
-  target: {fileID: 11400000, guid: a3f7ff20820a3d6d1ad21906d025d343, type: 2}
+  target: {fileID: 11400000, guid: 1fe6374038a319d4890dbf800d2a6163, type: 2}
   <BaseCost>k__BackingField: 1
   <InRange>k__BackingField: 1
   <MoveMode>k__BackingField: 0
   conditions:
-  - worldKey: {fileID: 11400000, guid: 5234447e8c83e9df78dff85c9e089e35, type: 2}
-    <Comparison>k__BackingField: 3
-    <Amount>k__BackingField: 1
-  effects:
-  - worldKey: {fileID: 11400000, guid: ea9ad7b8615eb35ae8151fb22f8606b5, type: 2}
-    <Increase>k__BackingField: 0
-  - worldKey: {fileID: 11400000, guid: 5234447e8c83e9df78dff85c9e089e35, type: 2}
-    <Increase>k__BackingField: 0
   - worldKey: {fileID: 11400000, guid: 1a5b1f6776da1a68e8f89b26b4fca7cb, type: 2}
+    <Comparison>k__BackingField: 1
+    <Amount>k__BackingField: 0
+  effects:
+  - worldKey: {fileID: 11400000, guid: 76efe9f441b45f0189fca317bdaccc37, type: 2}
     <Increase>k__BackingField: 1

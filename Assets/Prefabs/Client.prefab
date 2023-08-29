@@ -204,7 +204,10 @@ MonoBehaviour:
   leftItemsToGet: 0
   leftItemsToSteal: 0
   itemsInHand: 0
-  thiefProbability: 0.1
+  thiefProbability: 0.5
+  itemsHidden: 0
+  itemsInCart: 0
+  itemsInBag: 0
 --- !u!114 &8658044091684342799
 MonoBehaviour:
   m_ObjectHideFlags: 0

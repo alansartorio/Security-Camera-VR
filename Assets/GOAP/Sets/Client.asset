@@ -17,15 +17,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a6a363ba3c3e47662ae26459f5b99d39, type: 2}
   - {fileID: 11400000, guid: d85b70c918fdb0c0785fd67b2ff380c8, type: 2}
   - {fileID: 11400000, guid: 4aa75b098d607719495a9b5c532d871a, type: 2}
+  - {fileID: 11400000, guid: 132ee91c2dfa37f809a5af4bc98f06bc, type: 2}
+  - {fileID: 11400000, guid: 6345ab1217642cc2a9adb5078bf2aeb4, type: 2}
   goals:
   - {fileID: 11400000, guid: 2165cd76de8228dd98b69b9d41eee085, type: 2}
   - {fileID: 11400000, guid: df82e912f433c9bceb25c4f0ab060b94, type: 2}
   - {fileID: 11400000, guid: 56d771819f8be5632a7a70ca74b6d2a0, type: 2}
+  - {fileID: 11400000, guid: 0041b380577633f7795f0aa3ae561180, type: 2}
   targetSensors:
   - {fileID: 11400000, guid: eea372ca1d4a895e3a3115ae4ee4b102, type: 2}
   - {fileID: 11400000, guid: 19a32f7a001ecb4c29e3859a1c236fdd, type: 2}
+  - {fileID: 11400000, guid: c23c42de60c2c74beb3107cbc5e1ca0a, type: 2}
+  - {fileID: 11400000, guid: a5e674058c4ff5c329cd67a938893b5e, type: 2}
   worldSensors:
   - {fileID: 11400000, guid: be63d2169c3972aae922795ca693d160, type: 2}
   - {fileID: 11400000, guid: 9dd61eba464ef472fb6e5a35311fcc98, type: 2}
   - {fileID: 11400000, guid: 226f786f3302f04bc83a48d0d338f8f8, type: 2}
+  - {fileID: 11400000, guid: c4cbc1965be74c410a7fbbf98aa5a015, type: 2}
+  - {fileID: 11400000, guid: 91aca10947b4e9567911017c163a0d62, type: 2}
   debuggerClass: 

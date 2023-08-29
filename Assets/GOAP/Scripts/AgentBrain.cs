@@ -19,7 +19,7 @@ namespace GOAP.Scripts
 
         private void Start()
         {
-            agent.SetGoal<WanderGoal>(true);
+            agent.SetGoal<WanderGoal>(false);
         }
 
         private void OnEnable()
@@ -46,6 +46,12 @@ namespace GOAP.Scripts
                 {
                     agent.SetGoal<StealItemsGoal>(false);
                 }
+                return;
+            }
+
+            if (client.leftItemsToGet == 0 && client.leftItemsToSteal == 0)
+            {
+                agent.SetGoal<ExitGoal>(false);
                 return;
             }
 

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Gondola
   - Client
+  - Entrance
+  - Counter
   layers:
   - Default
   - TransparentFX

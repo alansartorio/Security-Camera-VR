@@ -7,9 +7,11 @@ public class ClientSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject clientPrefab;
     [SerializeField] private float spawnInterval;
+    [SerializeField] private int totalSpawns;
     [SerializeField] private GoapSetBehaviour goapSetBehaviour;
     private float time;
-    
+    private int spawnCounter = 0;
+
     void Start()
     {
         time = spawnInterval;
@@ -23,7 +25,17 @@ public class ClientSpawner : MonoBehaviour
         while (time < 0)
         {
             time += spawnInterval;
-            Instantiate(clientPrefab, transform.position, transform.rotation);
+            Spawn();
+            if (spawnCounter >= totalSpawns)
+            {
+                enabled = false;
+            }
         }
+    }
+
+    void Spawn()
+    {
+        Instantiate(clientPrefab, transform.position, transform.rotation);
+        spawnCounter++;
     }
 }

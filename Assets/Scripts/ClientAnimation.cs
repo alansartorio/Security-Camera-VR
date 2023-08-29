@@ -54,7 +54,8 @@ public class ClientAnimation : MonoBehaviour
         if (action is GatherItemAction)
         {
             animator.SetTrigger(Gather);
-        } else if (action is StealItemAction)
+        }
+        else if (action is StealItemAction)
         {
             animator.SetTrigger(Steal);
         }
@@ -62,15 +63,14 @@ public class ClientAnimation : MonoBehaviour
 
     private void OnActionStop(IActionBase action)
     {
-        if (action is GatherItemAction || action is StealItemAction)
+        if (action is GatherItemAction or StealItemAction)
         {
             Destroy(appleInHand);
         }
     }
-    
+
     void OnTargetOutOfRange(ITarget target)
     {
         animator.SetBool(Walking, true);
     }
-
 }
