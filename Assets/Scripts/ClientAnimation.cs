@@ -9,12 +9,13 @@ public class ClientAnimation : MonoBehaviour
     private static readonly int Walking = Animator.StringToHash("walking");
     private static readonly int Grab = Animator.StringToHash("grab");
     private static readonly int Gather = Animator.StringToHash("gather");
+    private static readonly int Steal = Animator.StringToHash("steal");
+    private static readonly int Pay = Animator.StringToHash("pay");
     [SerializeField] private Transform hand;
     [SerializeField] private GameObject applePrefab;
     private Animator animator;
     private AgentBehaviour agent;
     private GameObject appleInHand;
-    private static readonly int Steal = Animator.StringToHash("steal");
 
     private void Awake()
     {
@@ -41,11 +42,14 @@ public class ClientAnimation : MonoBehaviour
     void OnTargetInRange(ITarget target)
     {
         animator.SetBool(Walking, false);
-        if (agent.CurrentAction is GrabItemAction)
+        if (agent.CurrentAction is GrabItemAction && appleInHand == null)
         {
             animator.SetTrigger(Grab);
             appleInHand = Instantiate(applePrefab, hand);
             appleInHand.transform.localScale = Vector3.one * 0.01f;
+        } else if (agent.CurrentAction is PayAction)
+        {
+            animator.SetTrigger(Pay);
         }
     }
 
@@ -66,6 +70,7 @@ public class ClientAnimation : MonoBehaviour
         if (action is GatherItemAction or StealItemAction)
         {
             Destroy(appleInHand);
+            appleInHand = null;
         }
     }
 

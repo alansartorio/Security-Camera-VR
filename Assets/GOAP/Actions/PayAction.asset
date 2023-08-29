@@ -16,7 +16,7 @@ MonoBehaviour:
     PublicKeyToken=null
   target: {fileID: 11400000, guid: 828588c01350dd46d94d820faed65628, type: 2}
   <BaseCost>k__BackingField: 1
-  <InRange>k__BackingField: 2
+  <InRange>k__BackingField: 1
   <MoveMode>k__BackingField: 0
   conditions:
   - worldKey: {fileID: 11400000, guid: 1a5b1f6776da1a68e8f89b26b4fca7cb, type: 2}
