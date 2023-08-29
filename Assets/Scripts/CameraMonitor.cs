@@ -6,7 +6,6 @@ public class CameraMonitor : MonoBehaviour
     void Start()
     {
         Texture rt = securityCamera.GetComponent<CreateRenderTexture>().rt;
-        Debug.Log(rt);
         Material material = GetComponent<Renderer>().material;
         material.mainTexture = rt;
         material.color = Color.white;
