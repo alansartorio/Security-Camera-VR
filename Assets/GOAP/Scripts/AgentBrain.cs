@@ -19,7 +19,7 @@ namespace GOAP.Scripts
 
         private void Start()
         {
-            agent.SetGoal<ObtainItemsGoal>(false);
+            agent.SetGoal<WanderGoal>(true);
         }
 
         private void OnEnable()
