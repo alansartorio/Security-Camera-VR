@@ -23,6 +23,8 @@ public class ComputerCursor : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         horizontalCursorMovement.action.performed += context =>
         {
             cursorPosition.x += context.ReadValue<float>() * sensitivity;
