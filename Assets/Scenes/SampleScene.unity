@@ -271,6 +271,12 @@ Transform:
   - {fileID: 1108905535}
   m_Father: {fileID: 1923268089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &152400035 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6196257750577141782, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
+    type: 3}
+  m_PrefabInstance: {fileID: 717457780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &242038398
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +423,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2104748147}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &324367483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 211717691818723798, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
+    type: 3}
+  m_PrefabInstance: {fileID: 717457780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &401491672 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2288039117182455490, guid: a86bb280ae3a9142f9e5fb686f4acfdd,
@@ -555,6 +567,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &678215337 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 320171304158344959, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
+    type: 3}
+  m_PrefabInstance: {fileID: 717457780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &717457780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -563,6 +581,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 320171304158344959, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 530384242759737792, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1176,6 +1199,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6452241900415827237, guid: 2b29fc363ae7b8934af74904b20808f5,
+        type: 3}
+      propertyPath: toTransform
+      value: 
+      objectReference: {fileID: 678215337}
+    - target: {fileID: 6452241900415827237, guid: 2b29fc363ae7b8934af74904b20808f5,
+        type: 3}
+      propertyPath: fromTransform
+      value: 
+      objectReference: {fileID: 324367483}
     - target: {fileID: 7750547986041400241, guid: 2b29fc363ae7b8934af74904b20808f5,
         type: 3}
       propertyPath: m_Name
@@ -1717,6 +1750,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6452241900415827237, guid: 2b29fc363ae7b8934af74904b20808f5,
+        type: 3}
+      propertyPath: toTransform
+      value: 
+      objectReference: {fileID: 324367483}
+    - target: {fileID: 6452241900415827237, guid: 2b29fc363ae7b8934af74904b20808f5,
+        type: 3}
+      propertyPath: fromTransform
+      value: 
+      objectReference: {fileID: 678215337}
     - target: {fileID: 7750547986041400241, guid: 2b29fc363ae7b8934af74904b20808f5,
         type: 3}
       propertyPath: m_Name
@@ -2293,6 +2336,12 @@ Transform:
   - {fileID: 1588137216}
   m_Father: {fileID: 1923268089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1917488109 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8815767913403098270, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
+    type: 3}
+  m_PrefabInstance: {fileID: 717457780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1923268088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,6 +2799,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6452241900415827237, guid: 2b29fc363ae7b8934af74904b20808f5,
+        type: 3}
+      propertyPath: toTransform
+      value: 
+      objectReference: {fileID: 152400035}
+    - target: {fileID: 6452241900415827237, guid: 2b29fc363ae7b8934af74904b20808f5,
+        type: 3}
+      propertyPath: fromTransform
+      value: 
+      objectReference: {fileID: 1917488109}
     - target: {fileID: 7750547986041400241, guid: 2b29fc363ae7b8934af74904b20808f5,
         type: 3}
       propertyPath: m_Name
