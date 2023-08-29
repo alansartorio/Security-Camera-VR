@@ -200,8 +200,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff806838d224e9f80bb379a633e223c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftItemsToGrab: 0
+  maxItemCapacity: 5
+  leftItemsToGet: 0
+  leftItemsToSteal: 0
   itemsInHand: 0
+  thiefProbability: 0.1
 --- !u!114 &8658044091684342799
 MonoBehaviour:
   m_ObjectHideFlags: 0

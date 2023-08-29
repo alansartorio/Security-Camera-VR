@@ -417,6 +417,54 @@ Transform:
   - {fileID: 950498401}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &304971052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 304971054}
+  - component: {fileID: 304971053}
+  m_Layer: 0
+  m_Name: ClientSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &304971053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304971052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6665ee62294d5aba250e11fbe1c734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clientPrefab: {fileID: 2700958075650383540, guid: 270d8a2211a652cc7a327be1001e2b7c,
+    type: 3}
+  spawnInterval: 4
+  goapSetBehaviour: {fileID: 654785063}
+--- !u!4 &304971054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304971052}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &317525182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9062190839239954143, guid: a86bb280ae3a9142f9e5fb686f4acfdd,
@@ -3208,11 +3256,6 @@ PrefabInstance:
       objectReference: {fileID: 654785063}
     - target: {fileID: 1071865723052329291, guid: 270d8a2211a652cc7a327be1001e2b7c,
         type: 3}
-      propertyPath: maxItemCapacity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1071865723052329291, guid: 270d8a2211a652cc7a327be1001e2b7c,
-        type: 3}
       propertyPath: thiefProbability
       value: 1
       objectReference: {fileID: 0}
@@ -3270,3 +3313,4 @@ SceneRoots:
   - {fileID: 738518284}
   - {fileID: 654785064}
   - {fileID: 9079443476145625708}
+  - {fileID: 304971054}
