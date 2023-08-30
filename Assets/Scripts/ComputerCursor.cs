@@ -16,6 +16,8 @@ public class ComputerCursor : MonoBehaviour
     [SerializeField] private float sensitivity = 1;
     [SerializeField] private NavMeshAgent agent;
     private List<GameObject> cursors;
+    private Highlight highlightedClient;
+    private List<Camera> cameras;
 
     private Vector2 monitorSize = new(0.404f, 0.262f);
 
@@ -24,7 +26,7 @@ public class ComputerCursor : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-
+        
         horizontalCursorMovement.action.performed += context =>
         {
             cursorPosition.x += context.ReadValue<float>() * sensitivity;
@@ -35,29 +37,38 @@ public class ComputerCursor : MonoBehaviour
             cursorPosition.y += context.ReadValue<float>() * sensitivity;
             UpdatedCursorPosition();
         };
-        cursorClick.action.performed += context =>
-        {
-            var index = GetMonitorIndex();
-            var pos = GetInMonitorPosition();
-            var cameraMonitor = monitors[index].GetComponentInChildren<CameraMonitor>();
-            var camera = cameraMonitor.securityCamera.GetComponentInChildren<Camera>();
-            Ray ray = camera.ViewportPointToRay(pos / monitorSize);
-            if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.gameObject.CompareTag("Client"))
-            {
-                var client = hitInfo.transform.GetComponent<Client>();
-                client.AccuseOfTheft();
-            }
-        };
+        cursorClick.action.performed += context => { ClientOnCursor()?.AccuseOfTheft(); };
 
         cursors = monitors.Select(m => m.transform.Find("Screen/Canvas/Cursor").gameObject).ToList();
+        cameras = monitors.Select(m => m.GetComponentInChildren<CameraMonitor>().securityCamera.GetComponentInChildren<Camera>()).ToList();
 
         cursorPosition.Set(monitorSize.x * monitors.Count / 2, monitorSize.y / 2);
         UpdatedCursorPosition();
     }
 
+    Ray CursorRay()
+    {
+        var index = GetMonitorIndex();
+        var pos = GetInMonitorPosition();
+        var verticalMargin = (monitorSize.x - monitorSize.y) / 2;
+        Debug.Log($"{pos.y}, {pos.y / monitorSize.x}");
+        return cameras[index].ViewportPointToRay((pos + new Vector2(0, verticalMargin)) / monitorSize.x);
+    }
+
+    Client ClientOnCursor()
+    {
+        var ray = CursorRay();
+        // Debug.DrawRay(ray.origin, ray.direction * 40f);
+        if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.gameObject.CompareTag("Client"))
+        {
+            return hitInfo.transform.GetComponent<Client>();
+        }
+
+        return null;
+    }
+
     int GetMonitorIndex()
     {
-        
         return math.clamp((int)math.floor(cursorPosition.x / monitorSize.x), 0, cursors.Count - 1);
     }
 
@@ -87,8 +98,13 @@ public class ComputerCursor : MonoBehaviour
         // cursors[monitorIndex].transform.localPosition.y
     }
 
-    // Update is called once per frame
     void Update()
     {
+        var client = ClientOnCursor()?.GetComponent<Highlight>();
+
+        if (highlightedClient)
+            highlightedClient.SetHighlight(false);
+        client?.SetHighlight(true);
+        highlightedClient = client;
     }
 }

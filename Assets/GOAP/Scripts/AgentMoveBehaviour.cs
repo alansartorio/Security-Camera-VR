@@ -10,8 +10,6 @@ namespace GOAP.Scripts
     {
         private AgentBehaviour agent;
         private NavMeshAgent navAgent;
-        private ITarget currentTarget;
-        private bool shouldMove;
 
         private void Awake()
         {
@@ -21,33 +19,17 @@ namespace GOAP.Scripts
 
         private void OnEnable()
         {
-            agent.Events.OnTargetInRange += OnTargetInRange;
             agent.Events.OnTargetChanged += OnTargetChanged;
-            agent.Events.OnTargetOutOfRange += OnTargetOutOfRange;
         }
 
         private void OnDisable()
         {
-            agent.Events.OnTargetInRange -= OnTargetInRange;
             agent.Events.OnTargetChanged -= OnTargetChanged;
-            agent.Events.OnTargetOutOfRange -= OnTargetOutOfRange;
-        }
-
-        private void OnTargetInRange(ITarget target)
-        {
-            shouldMove = false;
         }
 
         private void OnTargetChanged(ITarget target, bool inRange)
         {
             navAgent.SetDestination(target.Position);
-            currentTarget = target;
-            shouldMove = !inRange;
-        }
-
-        private void OnTargetOutOfRange(ITarget target)
-        {
-            shouldMove = true;
         }
     }
 }

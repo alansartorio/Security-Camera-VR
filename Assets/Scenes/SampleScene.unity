@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 22142380}
   - component: {fileID: 22142379}
   m_Layer: 0
-  m_Name: Plane (4)
+  m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 242038401}
   - component: {fileID: 242038400}
   m_Layer: 0
-  m_Name: Plane (3)
+  m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
   clientPrefab: {fileID: 2700958075650383540, guid: 270d8a2211a652cc7a327be1001e2b7c,
     type: 3}
   spawnInterval: 4
-  totalSpawns: 4
+  totalSpawns: 10
   goapSetBehaviour: {fileID: 654785063}
 --- !u!4 &304971054
 Transform:
@@ -629,6 +629,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 334434877957245678, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
+        type: 3}
+      propertyPath: m_Name
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 530384242759737792, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -683,6 +688,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Complete Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027999140129254228, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
+        type: 3}
+      propertyPath: m_Name
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 4627883857836008950, guid: 68b33d63841ff7e698f28eff6dcc6ea2,
         type: 3}
@@ -1473,7 +1483,7 @@ GameObject:
   - component: {fileID: 1108905537}
   - component: {fileID: 1108905536}
   m_Layer: 0
-  m_Name: Plane (2)
+  m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1629,7 +1639,7 @@ MonoBehaviour:
     type: 3}
   cursorClick: {fileID: -7185686571105137276, guid: 1c3177ddb97fd290183e6c0385a18165,
     type: 3}
-  sensitivity: 0.0025
+  sensitivity: 0.001
   agent: {fileID: 0}
 --- !u!1 &1545426130 stripped
 GameObject:
@@ -1812,7 +1822,7 @@ GameObject:
   - component: {fileID: 1611986572}
   - component: {fileID: 1611986571}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1924,7 +1934,7 @@ GameObject:
   - component: {fileID: 1719401737}
   - component: {fileID: 1719401736}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
