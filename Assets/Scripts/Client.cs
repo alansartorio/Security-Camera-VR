@@ -1,4 +1,6 @@
 using System;
+using CrashKonijn.Goap.Behaviours;
+using GOAP.Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -13,6 +15,8 @@ public class Client : MonoBehaviour
     public int itemsHidden;
     public int itemsInCart;
     public int itemsInBag;
+
+    private AgentBehaviour agent;
 
     private void Awake()
     {
@@ -29,6 +33,8 @@ public class Client : MonoBehaviour
             leftItemsToSteal = 0;
         }
         itemsInHand = 0;
+
+        agent = GetComponent<AgentBehaviour>();
     }
 
     public void Exited()
@@ -43,7 +49,7 @@ public class Client : MonoBehaviour
 
     public void AccuseOfTheft()
     {
-        if (itemsHidden > 0)
+        if (itemsHidden > 0 || agent.CurrentAction is StealItemAction)
         {
             FindObjectOfType<PopupMonitor>().ShowPopup(PopupType.NiceCatch);
         
