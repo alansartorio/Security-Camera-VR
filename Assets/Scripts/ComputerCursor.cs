@@ -1,11 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Unity.Mathematics;
+using Unity.VersionControl.Git.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+
+enum ClickAction
+{
+    Accuse,
+    StartGame,
+}
 
 public class ComputerCursor : MonoBehaviour
 {
@@ -22,11 +27,12 @@ public class ComputerCursor : MonoBehaviour
     private Vector2 monitorSize = new(0.404f, 0.262f);
 
     private Vector2 cursorPosition = Vector2.zero;
+    [SerializeField] private GameStateManager gameStateManager;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        
+
         horizontalCursorMovement.action.performed += context =>
         {
             cursorPosition.x += context.ReadValue<float>() * sensitivity;
@@ -37,14 +43,63 @@ public class ComputerCursor : MonoBehaviour
             cursorPosition.y += context.ReadValue<float>() * sensitivity;
             UpdatedCursorPosition();
         };
-        cursorClick.action.performed += context => { ClientOnCursor()?.AccuseOfTheft(); };
+        SetClickAction(ClickAction.StartGame);
 
         cursors = monitors.Select(m => m.transform.Find("Screen/Canvas/Cursor").gameObject).ToList();
-        cameras = monitors.Select(m => m.GetComponentInChildren<CameraMonitor>().securityCamera.GetComponentInChildren<Camera>()).ToList();
+        cameras = monitors.Select(m =>
+            m.GetComponentInChildren<CameraMonitor>().securityCamera.GetComponentInChildren<Camera>()).ToList();
 
         cursorPosition.Set(monitorSize.x * monitors.Count / 2, monitorSize.y / 2);
         UpdatedCursorPosition();
     }
+
+    void AccuseOnCursor(InputAction.CallbackContext callbackContext)
+    {
+        ClientOnCursor()?.AccuseOfTheft();
+    }
+
+    void StartGame(InputAction.CallbackContext callbackContext)
+    {
+        gameStateManager.StartGame();
+    }
+
+    void SetClickAction(ClickAction clickAction)
+    {
+        switch (clickAction)
+        {
+            case ClickAction.Accuse:
+                cursorClick.action.performed -= StartGame;
+                cursorClick.action.performed += AccuseOnCursor;
+                break;
+            case ClickAction.StartGame:
+                cursorClick.action.performed -= AccuseOnCursor;
+                cursorClick.action.performed += StartGame;
+                break;
+        }
+    }
+
+    private void OnDisable()
+    {
+        gameStateManager.OnGameStart.RemoveListener(OnGameStart);
+        gameStateManager.OnGameOver.RemoveListener(OnGameOver);
+    }
+
+    private void OnEnable()
+    {
+        gameStateManager.OnGameStart.AddListener(OnGameStart);
+        gameStateManager.OnGameOver.AddListener(OnGameOver);
+    }
+
+    private void OnGameOver(GameStats stats)
+    {
+        SetClickAction(ClickAction.StartGame);
+    }
+
+    private void OnGameStart()
+    {
+        SetClickAction(ClickAction.Accuse);
+    }
+
 
     Ray CursorRay()
     {

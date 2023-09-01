@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CrashKonijn.Goap.Behaviours;
@@ -10,12 +11,17 @@ public class ClientSpawner : MonoBehaviour
     [SerializeField] private int totalSpawns;
     [SerializeField] private GoapSetBehaviour goapSetBehaviour;
     private float time;
-    private int spawnCounter = 0;
+    private int spawnCounter;
 
-    void Start()
+    private void Awake()
+    {
+        clientPrefab.GetComponent<AgentBehaviour>().goapSetBehaviour = goapSetBehaviour;
+    }
+
+    void OnEnable()
     {
         time = spawnInterval;
-        clientPrefab.GetComponent<AgentBehaviour>().goapSetBehaviour = goapSetBehaviour;
+        spawnCounter = 0;
     }
 
     void Update()
@@ -26,7 +32,7 @@ public class ClientSpawner : MonoBehaviour
         {
             time += spawnInterval;
             Spawn();
-            if (spawnCounter >= totalSpawns)
+            if (totalSpawns >= 0 && spawnCounter >= totalSpawns)
             {
                 enabled = false;
             }

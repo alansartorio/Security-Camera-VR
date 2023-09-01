@@ -26,12 +26,12 @@ namespace GOAP.Scripts
 
         public override ActionRunState Perform(IMonoAgent agent, Data data, ActionContext context)
         {
+            data.Client.Exited();
             return ActionRunState.Stop;
         }
-
+        
         public override void End(IMonoAgent agent, Data data)
         {
-            data.Client.Exited();
         }
     }
 }
