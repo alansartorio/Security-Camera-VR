@@ -9,13 +9,6 @@
       },
       "hash": "49408febaca033db231752406df55d795d4cafaf"
     },
-    "com.spoiledcat.git": {
-      "version": "1.0.18",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://registry.spoiledcat.com"
-    },
     "com.unity.ai.navigation": {
       "version": "1.1.4",
       "depth": 0,
@@ -272,6 +265,15 @@
         "com.unity.xr.core-utils": "2.1.1"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.unity.xr.picoxr": {
+      "version": "file:E:/Downloads/PICO Unity Integration SDK 230",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.unity.xr.management": "4.0.0",
+        "com.unity.xr.interaction.toolkit": "2.0.0"
+      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

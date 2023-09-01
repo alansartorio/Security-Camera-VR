@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brighter Lamp
       objectReference: {fileID: 0}
+    - target: {fileID: 4219844823443795388, guid: f36a927397cac494888ff3bac000a0b5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6707900984000292688, guid: f36a927397cac494888ff3bac000a0b5,
         type: 3}
       propertyPath: m_Intensity
