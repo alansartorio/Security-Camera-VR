@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rt: {fileID: 0}
+  size: 512
 --- !u!114 &6452241900415827237
 MonoBehaviour:
   m_ObjectHideFlags: 0
