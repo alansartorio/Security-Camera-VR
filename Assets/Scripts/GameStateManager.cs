@@ -18,7 +18,7 @@ public class GameStateManager : MonoBehaviour
     public UnityEvent<GameStats> OnGameOver;
     public UnityEvent OnGameStart;
     public int toleratedSanctions;
-    private int sanctionCount;
+    public int SanctionCount { get; private set; }
     
     void Start()
     {
@@ -45,13 +45,13 @@ public class GameStateManager : MonoBehaviour
         gameStats.wronglyAccused = 0;
         gameStats.catchedThieves = 0;
         gameStats.thiefEscapes = 0;
-        sanctionCount = 0;
+        SanctionCount = 0;
     }
 
     public void Sanction()
     {
-        sanctionCount++;
-        if (sanctionCount >= toleratedSanctions)
+        SanctionCount++;
+        if (SanctionCount >= toleratedSanctions)
         {
             GameOver();
         }

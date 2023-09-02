@@ -43,7 +43,6 @@ public class Client : MonoBehaviour
 
     public void Exited()
     {
-        Debug.Log("EXIT");
         if (itemsHidden > 0)
         {
             FindObjectOfType<PopupMonitor>().ShowPopup(PopupType.AThiefEscaped);

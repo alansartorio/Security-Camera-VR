@@ -79,6 +79,9 @@ public class PopupMonitor : MonoBehaviour
 
     public void ShowPopup(PopupType popupType)
     {
+        // Don't show popups if the game finished
+        if (gameOverPopup.activeSelf)
+            return;
         if (popups.Count == 0)
             timer = 0;
         popups.Enqueue(popupType);
