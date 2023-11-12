@@ -67,6 +67,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 354dfe8124b6fff0fbb0199241f8e702
   m_FloatValues:
     7156926367953fa809a9391bcad0bc32: 1500
+    b7ba89c9eaf736b1eb0b0ca7146057f5: 1
   m_TransitionOverrides: {}
 --- !u!244 &7527352930173984850
 AudioMixerEffectController:
@@ -85,4 +86,4 @@ AudioMixerEffectController:
     m_GUID: f15d7be565f0f9e4f8b55f360bc98281
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
-  m_Bypass: 0
+  m_Bypass: 1
