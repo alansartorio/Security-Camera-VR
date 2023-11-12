@@ -4,7 +4,7 @@ public class MusicController : MonoBehaviour
 {
     private GameStateManager gameStateManager;
     private AudioSource audioSource;
-    private readonly float maxMusicVolume = 0.05f;
+    private readonly float maxMusicVolume = 0.1f;
 
     private void Awake()
     {
