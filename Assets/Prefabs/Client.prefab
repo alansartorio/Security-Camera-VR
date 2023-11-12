@@ -300,7 +300,7 @@ AudioSource:
   m_Pitch: 0.75
   Loop: 1
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 256
   DopplerLevel: 1
