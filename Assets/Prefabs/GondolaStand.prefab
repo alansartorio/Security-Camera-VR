@@ -152,6 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applePrefab: {fileID: 9214191364991379641, guid: 44b5422cc4ba882d7af9f03f9137393e,
     type: 3}
-  appleCount: 10
+  appleCount: 5
   positionMultiplier: 0.8
   spreadSize: {fileID: 7109182422414085727}

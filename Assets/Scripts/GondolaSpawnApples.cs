@@ -18,6 +18,7 @@ public class GondolaSpawnApples : MonoBehaviour
             z = Random.Range(-0.5f, 0.5f) * spreadSize.localScale.z;
             var apple = Instantiate(applePrefab, transform);
             apple.transform.localPosition = new Vector3(x, 0, z) * positionMultiplier;
+            apple.isStatic = true;
         }
     }
 }
