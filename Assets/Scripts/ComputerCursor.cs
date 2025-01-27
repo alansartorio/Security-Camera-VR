@@ -1,163 +1,105 @@
-using System.Collections.Generic;
-using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.InputSystem;
-
-enum ClickAction
-{
-    Accuse,
-    StartGame,
-}
 
 public class ComputerCursor : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> monitors;
-    [SerializeField] private InputActionReference horizontalCursorMovement;
-    [SerializeField] private InputActionReference verticalCursorMovement;
-    [SerializeField] private InputActionReference cursorClick;
-    [SerializeField] private float sensitivity = 1;
-    [SerializeField] private NavMeshAgent agent;
-    private List<GameObject> cursors;
-    private Highlight highlightedClient;
-    private List<Camera> cameras;
-
-    private Vector2 monitorSize = new(0.404f, 0.262f);
-
-    private Vector2 cursorPosition = Vector2.zero;
-    [SerializeField] private GameStateManager gameStateManager;
+    private GameObject cursor;
+    public float rotationSpeed = 5f;
+    public float rayDistance = 100f;
+    public LayerMask hitLayer; 
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        cursor = GameObject.Find("Ray"); 
 
-        horizontalCursorMovement.action.performed += context =>
+        if (cursor == null)
         {
-            cursorPosition.x += context.ReadValue<float>() * sensitivity;
-            UpdatedCursorPosition();
-        };
-        verticalCursorMovement.action.performed += context =>
-        {
-            cursorPosition.y += context.ReadValue<float>() * sensitivity;
-            UpdatedCursorPosition();
-        };
-        SetClickAction(ClickAction.StartGame);
-
-        cursors = monitors.Select(m => m.transform.Find("Screen/Canvas/Cursor").gameObject).ToList();
-        cameras = monitors.Select(m =>
-            m.GetComponentInChildren<CameraMonitor>().securityCamera.GetComponentInChildren<Camera>()).ToList();
-
-        cursorPosition.Set(monitorSize.x * monitors.Count / 2, monitorSize.y / 2);
-        UpdatedCursorPosition();
-    }
-
-    void AccuseOnCursor(InputAction.CallbackContext callbackContext)
-    {
-        ClientOnCursor()?.AccuseOfTheft();
-    }
-
-    void StartGame(InputAction.CallbackContext callbackContext)
-    {
-        gameStateManager.StartGame();
-    }
-
-    void SetClickAction(ClickAction clickAction)
-    {
-        switch (clickAction)
-        {
-            case ClickAction.Accuse:
-                cursorClick.action.performed -= StartGame;
-                cursorClick.action.performed += AccuseOnCursor;
-                break;
-            case ClickAction.StartGame:
-                cursorClick.action.performed -= AccuseOnCursor;
-                cursorClick.action.performed += StartGame;
-                break;
+            Debug.LogError("Cursor wasn't found in the scene");
         }
-    }
-
-    private void OnDisable()
-    {
-        gameStateManager.OnGameStart.RemoveListener(OnGameStart);
-        gameStateManager.OnGameOver.RemoveListener(OnGameOver);
-    }
-
-    private void OnEnable()
-    {
-        gameStateManager.OnGameStart.AddListener(OnGameStart);
-        gameStateManager.OnGameOver.AddListener(OnGameOver);
-    }
-
-    private void OnGameOver(GameStats stats)
-    {
-        SetClickAction(ClickAction.StartGame);
-    }
-
-    private void OnGameStart()
-    {
-        SetClickAction(ClickAction.Accuse);
-    }
-
-
-    Ray CursorRay()
-    {
-        var index = GetMonitorIndex();
-        var pos = GetInMonitorPosition();
-        var verticalMargin = (monitorSize.x - monitorSize.y) / 2;
-        return cameras[index].ViewportPointToRay((pos + new Vector2(0, verticalMargin)) / monitorSize.x);
-    }
-
-    Client ClientOnCursor()
-    {
-        var ray = CursorRay();
-        // Debug.DrawRay(ray.origin, ray.direction * 40f);
-        if (Physics.Raycast(ray, out var hitInfo) && hitInfo.transform.gameObject.CompareTag("Client"))
-        {
-            return hitInfo.transform.GetComponent<Client>();
-        }
-
-        return null;
-    }
-
-    int GetMonitorIndex()
-    {
-        return math.clamp((int)math.floor(cursorPosition.x / monitorSize.x), 0, cursors.Count - 1);
-    }
-
-    Vector2 GetInMonitorPosition()
-    {
-        Vector2 pos;
-        pos.x = cursorPosition.x % monitorSize.x;
-        pos.y = cursorPosition.y;
-        return pos;
-    }
-
-    void UpdatedCursorPosition()
-    {
-        cursorPosition.x = math.clamp(cursorPosition.x, 0, monitorSize.x * monitors.Count);
-        cursorPosition.y = math.clamp(cursorPosition.y, 0, monitorSize.y);
-
-        foreach (var cursor in cursors)
-        {
-            cursor.SetActive(false);
-        }
-
-        int monitorIndex = GetMonitorIndex();
-        cursors[monitorIndex].SetActive(true);
-        var pos = GetInMonitorPosition();
-        pos -= monitorSize / 2;
-        cursors[monitorIndex].transform.localPosition = pos;
-        // cursors[monitorIndex].transform.localPosition.y
     }
 
     void Update()
     {
-        var client = ClientOnCursor()?.GetComponent<Highlight>();
+        RotateCubeTowardsMouse();
+        ShootRayFromCube();
+        MoveCursorOnCanvas();
+    }
 
-        if (highlightedClient)
-            highlightedClient.SetHighlight(false);
-        client?.SetHighlight(true);
-        highlightedClient = client;
+    void RotateCubeTowardsMouse()
+    {
+        if (cursor != null)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, hitLayer)) 
+            {
+                Vector3 direction = hit.point - cursor.transform.position;
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                cursor.transform.rotation = Quaternion.Slerp(cursor.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                Debug.DrawLine(cursor.transform.position, hit.point, Color.green);
+            }
+            else
+            {
+                Vector3 direction = ray.direction;
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                cursor.transform.rotation = Quaternion.Slerp(cursor.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            }
+        }
+    }
+
+    void ShootRayFromCube()
+    {
+        if (cursor != null)
+        {
+            Ray ray = new Ray(cursor.transform.position, cursor.transform.forward);
+            Debug.DrawRay(cursor.transform.position, cursor.transform.forward * rayDistance, Color.red, 0.1f);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, rayDistance, hitLayer))
+            {
+                Debug.Log("Ray hit: " + hit.collider.name);
+
+                Canvas canvas = hit.collider.GetComponentInChildren<Canvas>();
+                if (canvas != null)
+                {
+                    Vector3 screenPosition = Camera.main.WorldToScreenPoint(hit.point);
+
+                    RectTransform cursorRectTransform = canvas.GetComponentInChildren<RectTransform>();
+                    if (cursorRectTransform != null)
+                    {
+                        cursorRectTransform.position = screenPosition;
+                    }
+                    else
+                    {
+                        Debug.Log("Cursor wasn't found");
+                    }
+                }
+                else
+                {
+                    Debug.Log("Canvas wasn't found");
+                }
+            }
+        }
+    }
+
+
+    void MoveCursorOnCanvas()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, hitLayer))
+        {
+            Canvas canvas = hit.collider.GetComponentInParent<Canvas>();
+            if (canvas != null)
+            {
+                GameObject cursorUI = canvas.GetComponentInChildren<Transform>().gameObject;
+                if (cursorUI != null)
+                {
+                    Vector3 screenPosition = Camera.main.WorldToScreenPoint(hit.point);
+                    cursorUI.transform.position = screenPosition;
+                }
+            }
+        }
     }
 }
