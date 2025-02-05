@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414729, b: 0.121078685, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.12107873, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -228,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 3118138934472166979, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5158500219687591445, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
@@ -426,7 +426,7 @@ PrefabInstance:
     - target: {fileID: 3118138934472166979, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5158500219687591445, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
@@ -1778,7 +1778,7 @@ PrefabInstance:
     - target: {fileID: 3118138934472166979, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5158500219687591445, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
@@ -1872,7 +1872,7 @@ PrefabInstance:
     - target: {fileID: 3118138934472166979, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5158500219687591445, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
@@ -2018,7 +2018,7 @@ PrefabInstance:
     - target: {fileID: 3118138934472166979, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5158500219687591445, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
@@ -2381,7 +2381,7 @@ MonoBehaviour:
   OnGameStart:
     m_PersistentCalls:
       m_Calls: []
-  lightMapSwitcher: {fileID: 0}
+  lightMapSwitcher: {fileID: 788778905}
   toleratedSanctions: 3
 --- !u!4 &788778903
 Transform:
@@ -2424,13 +2424,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   darkLightmapDir:
-  - {fileID: 2800000, guid: 3fb14caac08a9305aade9b11aa963772, type: 3}
-  - {fileID: 2800000, guid: 0de8d493f0aa417beb7c5ff3d689f684, type: 3}
+  - {fileID: 2800000, guid: 5623463c2f9e952e7b8723f8e0a77faf, type: 3}
+  - {fileID: 2800000, guid: f6ec3126f8c4bfdc7adb0e789674e9ad, type: 3}
   darkLightmapColor:
-  - {fileID: 2800000, guid: 2b9d96d9c417feee0b84ef2bec21800c, type: 3}
-  - {fileID: 2800000, guid: 9303f78eb4091fae8a590856d7b5d064, type: 3}
-  brightLightmapDir: []
-  brightLightmapColor: []
+  - {fileID: 2800000, guid: 1fd3dcd068a159ffa8d0b1fe59889cf3, type: 3}
+  - {fileID: 2800000, guid: 560ddeea7a6d719998d9e511230e54c7, type: 3}
+  brightLightmapDir:
+  - {fileID: 2800000, guid: 8bd57dba618ad186987c6fd34b3e8f1d, type: 3}
+  - {fileID: 2800000, guid: ce7308a2350cbd9cd9f483b4e903e8a4, type: 3}
+  brightLightmapColor:
+  - {fileID: 2800000, guid: 6497eedf9a38804e78173f1625e22c46, type: 3}
+  - {fileID: 2800000, guid: c692bbefef3be9e79a2e50b850f5d925, type: 3}
 --- !u!4 &789503350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4663612384140405083, guid: ca79c33cbe8bf9745b589481614f827b,
@@ -7896,6 +7900,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: -427935273991228770, guid: 8041bbb0327c05551b9497f6c7c8ad44,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 626750604710011680, guid: 8041bbb0327c05551b9497f6c7c8ad44,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7926,6 +7935,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 464e4ccbef8ac3fc7b54960ebf1aa393, type: 2}
+    - target: {fileID: 7706943883357617570, guid: 8041bbb0327c05551b9497f6c7c8ad44,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8556605948892946097, guid: 8041bbb0327c05551b9497f6c7c8ad44,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8923,7 +8937,7 @@ PrefabInstance:
     - target: {fileID: 3118138934472166979, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5158500219687591445, guid: c5ef25ab07f0f0086b29b55e947397f4,
         type: 3}
