@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Interfaces;
 using GOAP.Scripts;
@@ -12,10 +13,9 @@ public class ClientAnimation : MonoBehaviour
     private static readonly int Steal = Animator.StringToHash("steal");
     private static readonly int Pay = Animator.StringToHash("pay");
     [SerializeField] private Transform hand;
-    [SerializeField] private GameObject applePrefab;
     private Animator animator;
     private AgentBehaviour agent;
-    private GameObject appleInHand;
+    private GameObject productInHand;
 
     private void Awake()
     {
@@ -42,12 +42,20 @@ public class ClientAnimation : MonoBehaviour
     void OnTargetInRange(ITarget target)
     {
         animator.SetBool(Walking, false);
-        if (agent.CurrentAction is GrabItemAction && appleInHand == null)
+        if (agent.CurrentAction is GrabItemAction gia && productInHand == null)
         {
             animator.SetTrigger(Grab);
-            appleInHand = Instantiate(applePrefab, hand);
-            appleInHand.transform.localScale = Vector3.one * 0.01f;
-        } else if (agent.CurrentAction is PayAction)
+
+            GameObject targetGondola = GameObject.FindGameObjectsWithTag("Gondola")
+                .OrderBy(go => (go.transform.position - agent.CurrentActionData.Target.Position).sqrMagnitude)
+                .First();
+            var gondola = targetGondola.GetComponent<Gondola>();
+            var productPrefab = gondola.ProductPrefab;
+            Debug.Log(productPrefab);
+            productInHand = Instantiate(productPrefab, hand);
+            productInHand.transform.localScale = Vector3.one * 0.01f;
+        }
+        else if (agent.CurrentAction is PayAction)
         {
             animator.SetTrigger(Pay);
         }
@@ -69,8 +77,8 @@ public class ClientAnimation : MonoBehaviour
     {
         if (action is GatherItemAction or StealItemAction)
         {
-            Destroy(appleInHand);
-            appleInHand = null;
+            Destroy(productInHand);
+            productInHand = null;
         }
     }
 

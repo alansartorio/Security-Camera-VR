@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 3216298663253457906}
   - component: {fileID: 9032256563744429873}
   - component: {fileID: 9028731717203135865}
+  - component: {fileID: 4093790522526064690}
   m_Layer: 0
   m_Name: Lateral Gondola
   m_TagString: Gondola
@@ -394,6 +395,21 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &4093790522526064690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587476155182626223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf12546b82fe96077a378331f1fb0615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProductPrefab: {fileID: 919132149155446097, guid: a5255b27f3724c01f87e24b5f6df00d8,
+    type: 3}
+  ProductCount: 5
 --- !u!1001 &3681189160096128148
 PrefabInstance:
   m_ObjectHideFlags: 0
