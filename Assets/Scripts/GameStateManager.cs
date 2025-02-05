@@ -17,9 +17,10 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private PopupMonitor popupMonitor;
     public UnityEvent<GameStats> OnGameOver;
     public UnityEvent OnGameStart;
+    [SerializeField] private LightMapSwitcher lightMapSwitcher;
     public int toleratedSanctions;
     public int SanctionCount { get; private set; }
-    
+
     void Start()
     {
         Reset();
@@ -75,6 +76,15 @@ public class GameStateManager : MonoBehaviour
         foreach (var light in lights)
         {
             light.enabled = enabled;
+        }
+
+        if (enabled)
+        {
+            lightMapSwitcher.TurnOn();
+        }
+        else
+        {
+            lightMapSwitcher.TurnOff();
         }
     }
 }
