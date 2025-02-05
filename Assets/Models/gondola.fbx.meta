@@ -3,7 +3,17 @@ guid: 4f7ecc6f1889fcddcaac1a96a79c53f9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gondola
+    second: {fileID: 2100000, guid: bd51704389313702b9c8fa30aa706434, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: holes
+    second: {fileID: 2100000, guid: 44bec910525bf0b38b6fb22133825f28, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
