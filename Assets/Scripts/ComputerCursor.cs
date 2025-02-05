@@ -108,8 +108,6 @@ public class ComputerCursor : MonoBehaviour
         var pos = GetInMonitorPosition();
         var verticalMargin = (monitorSize.x - monitorSize.y) / 2;
         
-        Debug.Log(index);
-        Debug.Log("Cámara asignada: " + (cameras[index] != null ? cameras[index].name : "null"));
         return cameras[index].ViewportPointToRay((pos + new Vector2(0, verticalMargin)) / monitorSize.x);
     }
 

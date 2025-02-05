@@ -51,7 +51,6 @@ public class ClientAnimation : MonoBehaviour
                 .First();
             var gondola = targetGondola.GetComponent<Gondola>();
             var productPrefab = gondola.ProductPrefab;
-            Debug.Log(productPrefab);
             productInHand = Instantiate(productPrefab, hand);
             productInHand.transform.localScale = Vector3.one * 0.01f;
         }
