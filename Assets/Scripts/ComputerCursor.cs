@@ -105,10 +105,10 @@ public class ComputerCursor : MonoBehaviour
     Ray CursorRay()
     {
         var index = GetMonitorIndex();
-        var pos = GetInMonitorPosition();
+        var pos = GetInMonitorPosition(index);
         var verticalMargin = (monitorSize.x - monitorSize.y) / 2;
-        
-        return cameras[index].ViewportPointToRay((pos + new Vector2(0, verticalMargin)) / monitorSize.x);
+
+        return cameras[ToLinearIndex(index)].ViewportPointToRay((pos + new Vector2(0, verticalMargin)) / monitorSize.x);
     }
 
     Client ClientOnCursor()
@@ -118,23 +118,21 @@ public class ComputerCursor : MonoBehaviour
         {
             return hitInfo.transform.GetComponent<Client>();
         }
+
         return null;
     }
 
-    int GetMonitorIndex()
+    int ToLinearIndex(Vector2Int position) => position.y * cols + position.x;
+
+    Vector2Int GetMonitorIndex()
     {
         int xIndex = math.clamp((int)math.floor(cursorPosition.x / monitorSize.x), 0, cols - 1);
         int yIndex = math.clamp((int)math.floor(cursorPosition.y / monitorSize.y), 0, rows - 1);
-        return yIndex * cols + xIndex;
+        return new Vector2Int(xIndex, yIndex);
     }
 
-    Vector2 GetInMonitorPosition()
-    {
-        Vector2 pos;
-        pos.x = cursorPosition.x % monitorSize.x;
-        pos.y = cursorPosition.y % monitorSize.y;
-        return pos;
-    }
+    Vector2 GetInMonitorPosition(Vector2Int monitorIndex) => cursorPosition - monitorIndex * monitorSize;
+
 
     void UpdateCursorPosition()
     {
@@ -146,11 +144,13 @@ public class ComputerCursor : MonoBehaviour
             cursor.SetActive(false);
         }
 
-        int monitorIndex = GetMonitorIndex();
-        cursors[monitorIndex].SetActive(true);
-        var pos = GetInMonitorPosition();
+        var monitorIndex = GetMonitorIndex();
+        var linearIndex = ToLinearIndex(monitorIndex);
+
+        cursors[linearIndex].SetActive(true);
+        var pos = GetInMonitorPosition(monitorIndex);
         pos -= monitorSize / 2;
-        cursors[monitorIndex].transform.localPosition = pos;
+        cursors[linearIndex].transform.localPosition = pos;
     }
 
     void Update()
