@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435034148579356365}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -150,8 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6dd13051a2def8a5be9562d15ea1576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applePrefab: {fileID: 9214191364991379641, guid: 44b5422cc4ba882d7af9f03f9137393e,
-    type: 3}
-  appleCount: 5
+  ProductPrefab: {fileID: 0}
+  ProductCount: 1
   positionMultiplier: 0.8
   spreadSize: {fileID: 7109182422414085727}
