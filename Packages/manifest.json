@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "com.crashkonijn.goap": "https://github.com/crashkonijn/GOAP.git?path=/Package",
-    "com.spoiledcat.git": "1.0.18",
     "com.unity.ai.navigation": "1.1.4",
     "com.unity.collab-proxy": "2.0.5",
     "com.unity.formats.fbx": "4.2.1",
@@ -49,13 +48,5 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
   },
-  "scopedRegistries": [
-    {
-      "name": "spoiledcat",
-      "url": "https://registry.spoiledcat.com",
-      "scopes": [
-        "com.spoiledcat"
-      ]
-    }
-  ]
+  "scopedRegistries": []
 }

@@ -16,13 +16,6 @@
       },
       "hash": "49408febaca033db231752406df55d795d4cafaf"
     },
-    "com.spoiledcat.git": {
-      "version": "1.0.18",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://registry.spoiledcat.com"
-    },
     "com.unity.ai.navigation": {
       "version": "1.1.4",
       "depth": 0,
