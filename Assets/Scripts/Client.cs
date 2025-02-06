@@ -27,8 +27,9 @@ public class Client : MonoBehaviour
         bool steals = Random.Range(0f, 1) < thiefProbability;
         if (totalItems > 0 && steals)
         {
-            leftItemsToSteal = Random.Range(1, totalItems + 1);
-            leftItemsToGet = totalItems - leftItemsToSteal;
+			leftItemsToSteal = Random.Range(1, totalItems + 1);
+			// leftItemsToSteal = totalItems;
+			leftItemsToGet = totalItems - leftItemsToSteal;
         }
         else
         {
