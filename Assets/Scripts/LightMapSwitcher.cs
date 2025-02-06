@@ -8,7 +8,7 @@ public class LightMapSwitcher : MonoBehaviour
 
     private LightmapData[] darkLightmap, brightLightmap;
 
-    void Start()
+    void Awake()
     {
         List<LightmapData> dlightmap = new List<LightmapData>();
 
@@ -41,11 +41,11 @@ public class LightMapSwitcher : MonoBehaviour
 
     public void TurnOn()
     {
-        LightmapSettings.lightmaps = darkLightmap;
+        LightmapSettings.lightmaps = brightLightmap;
     }
 
     public void TurnOff()
     {
-        LightmapSettings.lightmaps = brightLightmap;
+        LightmapSettings.lightmaps = darkLightmap;
     }
 }

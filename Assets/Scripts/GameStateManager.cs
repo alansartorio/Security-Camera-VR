@@ -21,8 +21,9 @@ public class GameStateManager : MonoBehaviour
     public int toleratedSanctions;
     public int SanctionCount { get; private set; }
 
-    void Start()
+    private void Start()
     {
+        SetLightsEnabled(false);
         Reset();
     }
 
